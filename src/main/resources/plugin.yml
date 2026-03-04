@@ -1,0 +1,64 @@
+main: cw.cobwebx.CobWebX
+version: 1.0
+name: CobWebX
+author: C16 Plugins
+api-version: 1.13
+
+commands:
+  cobwebx:
+    description: Main CobWebX command
+    usage: /cobwebx <help|reload|check|creategroup|deletegroup|addgroup|addblock|viewgroup|bypass>
+    aliases:
+      - cbx
+      - c16
+
+permissions:
+  cobwebx.admin:
+    description: Allows access to all CobWebX commands
+    default: op
+    children:
+      cobwebx.help: true
+      cobwebx.reload: true
+      cobwebx.check: true
+      cobwebx.creategroup: true
+      cobwebx.deletegroup: true
+      cobwebx.addgroup: true
+      cobwebx.addblock: true
+      cobwebx.viewgroup: true
+      cobwebx.bypass: true
+
+  cobwebx.help:
+    description: Allows using /cobwebx help
+    default: op
+
+  cobwebx.reload:
+    description: Allows using /cobwebx reload
+    default: op
+
+  cobwebx.check:
+    description: Allows using /cobwebx check
+    default: op
+
+  cobwebx.creategroup:
+    description: Allows using /cobwebx creategroup
+    default: op
+
+  cobwebx.deletegroup:
+    description: Allows using /cobwebx deletegroup
+    default: op
+
+  cobwebx.addgroup:
+    description: Allows using /cobwebx addgroup
+    default: op
+
+  cobwebx.addblock:
+    description: Allows using /cobwebx addblock
+    default: op
+
+  cobwebx.viewgroup:
+    description: Allows using /cobwebx viewgroup
+    default: op
+
+  cobwebx.bypass:
+    description: Allows using /cobwebx bypass
+    default: op

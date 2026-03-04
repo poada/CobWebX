@@ -1,0 +1,52 @@
+# =====================================================
+# CobWebX | Configuration
+# =====================================================
+# CobWebX controls block PLACE / BREAK / USE inside
+# WorldGuard regions defined in each group.
+#
+# Each group defines:
+#  - regions: WorldGuard region IDs where rules apply
+#  - blocks: allowed blocks players can place/break/use
+#  - block_remove_delay: ticks before placed blocks are removed
+#
+# 20 ticks = 1 second
+# =====================================================
+
+groups:
+
+  example1:
+    regions:
+      - region_example2
+    blocks:
+      - COBWEB
+      - BLUE_WOOL
+    block_remove_delay: 1200
+
+  example2:
+    regions:
+      - region_example2
+    blocks:
+      - COBWEB
+      - BLUE_WOOL
+      - RED_WOOL
+      - BEACON
+    block_remove_delay: 600
+
+
+# =====================================================
+# Commands (overview)
+# =====================================================
+# /cobwebx help
+# /cobwebx reload
+# /cobwebx check
+#
+# Group management:
+# /cobwebx creategroup <name>
+# /cobwebx deletegroup <name>
+# /cobwebx addgroup <region> <group>
+# /cobwebx addblock <block> <group>
+# /cobwebx viewgroup [group]
+#
+# Bypass:
+# /cobwebx bypass  (OP only)
+# =====================================================
