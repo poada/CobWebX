@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -163,20 +164,29 @@ public class CobWebXListener implements Listener {
             return;
         }
 
-        // Dentro de región -> imitamos "cancel_event: false" (manual place)
+        // Dentro de región -> manual place, pero conservando orientación (BlockData)
         e.setCancelled(true);
 
-        EquipmentSlot hand = e.getHand();
-        int delay = match.delayTicks;
+        final EquipmentSlot hand = e.getHand();
+        final int delay = match.delayTicks;
+
+        // 🔥 guardar BlockData (esto arregla botones en techo/pared, etc.)
+        final BlockData data = e.getBlockPlaced().getBlockData().clone();
+        final var loc = b.getLocation();
 
         Bukkit.getScheduler().runTask(plugin, () -> {
-            // colocar manual
-            b.setType(type, false);
+            Block placed = loc.getBlock();
+
+            // colocar manual conservando data
+            placed.setType(type, false);
+            placed.setBlockData(data, false);
+
             takeOneFromHand(p, hand, type);
 
             // auto-remove
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                if (b.getType() == type) b.setType(Material.AIR, false);
+                Block now = loc.getBlock();
+                if (now.getType() == type) now.setType(Material.AIR, false);
             }, delay);
         });
     }
