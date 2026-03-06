@@ -20,3 +20,4 @@ CobWebX is a lightweight plugin that controls temporary block placement inside W
 
 Latest version:
 https://github.com/poada/CobWebX/releases
+https://www.spigotmc.org/resources/cobwebx.133139
