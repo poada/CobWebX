@@ -1,64 +1,121 @@
 main: cw.cobwebx.CobWebX
-version: 1.0
 name: CobWebX
+version: 1.1
 author: C16 Plugins
 api-version: 1.13
 
+depend:
+  - WorldGuard
+
+softdepend:
+  - Multiverse-Core
+
 commands:
   cobwebx:
-    description: Main CobWebX command
-    usage: /cobwebx <help|reload|check|creategroup|deletegroup|addgroup|addblock|viewgroup|bypass>
+    description: Main command for CobWebX
+    usage: /cobwebx help
     aliases:
+      - cwx
       - cbx
-      - c16
 
 permissions:
   cobwebx.admin:
-    description: Allows access to all CobWebX commands
+    description: Access to all CobWebX commands
     default: op
     children:
       cobwebx.help: true
       cobwebx.reload: true
       cobwebx.check: true
+      cobwebx.bypass: true
+      cobwebx.debug: true
       cobwebx.creategroup: true
       cobwebx.deletegroup: true
-      cobwebx.addgroup: true
-      cobwebx.addblock: true
-      cobwebx.viewgroup: true
-      cobwebx.bypass: true
+      cobwebx.renamegroup: true
+      cobwebx.listgroups: true
+      cobwebx.info: true
+      cobwebx.toggle: true
+      cobwebx.add: true
+      cobwebx.add.region: true
+      cobwebx.add.block: true
+      cobwebx.remove: true
+      cobwebx.remove.region: true
+      cobwebx.remove.block: true
+      cobwebx.setdelay: true
 
   cobwebx.help:
-    description: Allows using /cobwebx help
+    description: Allows use of /cobwebx help
     default: op
 
   cobwebx.reload:
-    description: Allows using /cobwebx reload
+    description: Allows use of /cobwebx reload
     default: op
 
   cobwebx.check:
-    description: Allows using /cobwebx check
-    default: op
-
-  cobwebx.creategroup:
-    description: Allows using /cobwebx creategroup
-    default: op
-
-  cobwebx.deletegroup:
-    description: Allows using /cobwebx deletegroup
-    default: op
-
-  cobwebx.addgroup:
-    description: Allows using /cobwebx addgroup
-    default: op
-
-  cobwebx.addblock:
-    description: Allows using /cobwebx addblock
-    default: op
-
-  cobwebx.viewgroup:
-    description: Allows using /cobwebx viewgroup
+    description: Allows use of /cobwebx check
     default: op
 
   cobwebx.bypass:
-    description: Allows using /cobwebx bypass
+    description: Allows use of /cobwebx bypass
+    default: op
+
+  cobwebx.debug:
+    description: Allows use of /cobwebx debug
+    default: op
+
+  cobwebx.creategroup:
+    description: Allows use of /cobwebx creategroup
+    default: op
+
+  cobwebx.deletegroup:
+    description: Allows use of /cobwebx deletegroup
+    default: op
+
+  cobwebx.renamegroup:
+    description: Allows use of /cobwebx renamegroup
+    default: op
+
+  cobwebx.listgroups:
+    description: Allows use of /cobwebx listgroups
+    default: op
+
+  cobwebx.info:
+    description: Allows use of /cobwebx info
+    default: op
+
+  cobwebx.toggle:
+    description: Allows use of /cobwebx toggle
+    default: op
+
+  cobwebx.add:
+    description: Allows use of /cobwebx add
+    default: op
+    children:
+      cobwebx.add.region: true
+      cobwebx.add.block: true
+
+  cobwebx.add.region:
+    description: Allows use of /cobwebx add region
+    default: op
+
+  cobwebx.add.block:
+    description: Allows use of /cobwebx add block
+    default: op
+
+  cobwebx.remove:
+    description: Allows use of /cobwebx remove
+    default: op
+    children:
+      cobwebx.remove.region: true
+      cobwebx.remove.block: true
+
+  cobwebx.remove.region:
+    description: Allows use of /cobwebx remove region
+    default: op
+
+  cobwebx.remove.block:
+    description: Allows use of /cobwebx remove block
+    default: op
+
+  cobwebx.setdelay:
+    description: Allows use of /cobwebx setdelay
     default: op

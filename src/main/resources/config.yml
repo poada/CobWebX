@@ -1,52 +1,83 @@
 # =====================================================
 # CobWebX | Configuration
 # =====================================================
-# CobWebX controls block PLACE / BREAK / USE inside
-# WorldGuard regions defined in each group.
+#
+# CobWebX controls BLOCK PLACE / BREAK / USE
+# inside specific WorldGuard regions.
+#
+# The plugin works using GROUPS.
 #
 # Each group defines:
-#  - regions: WorldGuard region IDs where rules apply
-#  - blocks: allowed blocks players can place/break/use
-#  - block_remove_delay: ticks before placed blocks are removed
+#   - enabled: enables or disables the group
+#   - regions: where the group works
+#   - blocks: allowed blocks inside those regions
+#   - block_remove_delay: time in SECONDS before placed blocks are removed
 #
-# 20 ticks = 1 second
+# IMPORTANT:
+# Regions must use this format:
+#
+#   world:region
+#
+# Example:
+#   world:mapa
+#
+# This allows CobWebX to support:
+#   - multiple worlds
+#   - WorldGuard regions per world
+#   - Multiverse-Core compatible setups
+#
 # =====================================================
 
 groups:
 
-  example1:
+  boxpvp:
+    enabled: true
     regions:
-      - region_example2
-    blocks:
-      - COBWEB
-      - BLUE_WOOL
-    block_remove_delay: 1200
-
-  example2:
-    regions:
-      - region_example2
+      - world:mapa
+      - world:arena
     blocks:
       - COBWEB
       - BLUE_WOOL
       - RED_WOOL
       - BEACON
-    block_remove_delay: 600
+    block_remove_delay: 60
+
+settings:
+  debug: false
 
 
 # =====================================================
-# Commands (overview)
+# Commands
 # =====================================================
+#
+# Basic:
 # /cobwebx help
 # /cobwebx reload
 # /cobwebx check
+# /cobwebx debug
+# /cobwebx bypass
 #
 # Group management:
-# /cobwebx creategroup <name>
-# /cobwebx deletegroup <name>
-# /cobwebx addgroup <region> <group>
-# /cobwebx addblock <block> <group>
-# /cobwebx viewgroup [group]
+# /cobwebx creategroup <group>
+# /cobwebx deletegroup <group>
+# /cobwebx renamegroup <old> <new>
+# /cobwebx listgroups
+# /cobwebx info <group>
+# /cobwebx toggle <group>
+#
+# Edit groups:
+# /cobwebx add region <group> <world> <region>
+# /cobwebx add block <group> <block>
+#
+# Remove from groups:
+# /cobwebx remove region <group> <world> <region>
+# /cobwebx remove block <group> <block>
+#
+# Delay:
+# /cobwebx setdelay <group> <seconds>
 #
 # Bypass:
-# /cobwebx bypass  (OP only)
+# OP players have bypass enabled by default.
+# /cobwebx bypass toggles it on/off manually.
+#
 # =====================================================
